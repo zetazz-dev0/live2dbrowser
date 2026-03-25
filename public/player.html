@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live2D Player</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="player-body">
+    <div class="player-shell">
+      <div class="player-head">
+        <div>
+          <div id="playerTitle" class="player-title">加载中</div>
+          <div id="playerSubtitle" class="player-subtitle"></div>
+        </div>
+        <div id="playerStatus" class="status-pill">初始化</div>
+      </div>
+
+      <div class="player-toolbar">
+        <div class="player-tools-group">
+          <label id="variantField" class="toolbar-field is-hidden">
+            <span>变体</span>
+            <select id="variantSelect"></select>
+          </label>
+          <label id="motionField" class="toolbar-field is-hidden">
+            <span>动作</span>
+            <select id="motionSelect"></select>
+          </label>
+          <button id="playMotionButton" class="accent is-hidden" type="button">播放动作</button>
+          <button id="randomMotionButton" class="is-hidden" type="button">随机动作</button>
+        </div>
+        <div id="viewTools" class="player-tools-group"></div>
+      </div>
+
+      <div class="player-tip">滚轮缩放，直接拖拽即可移动模型；2 代左键仍保留内置命中动作，3 代可轻点触发或在上方选择动作。</div>
+
+      <div id="playerCanvas" class="player-canvas">
+        <div id="playerStage" class="player-stage">
+          <div id="renderFrame" class="render-frame">
+            <canvas id="live2dCanvas" class="live2d-canvas"></canvas>
+            <div id="pixiHost" class="pixi-host"></div>
+          </div>
+          <div id="playerOverlay" class="player-overlay">
+            <p id="playerOverlayText" class="player-overlay-text">正在加载模型…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/player.js" type="module"></script>
+  </body>
+</html>

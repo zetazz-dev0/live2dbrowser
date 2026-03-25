@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live2D 模型预览</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Live2D Batch Viewer</p>
+          <h1>单模型预览 Cubism 2 / 3</h1>
+          <p class="hero-copy">
+            页面会先扫描你设置的模型根目录，再按文件夹树整理出可预览的模型；从左侧点选一个模型后，右侧会以大画布打开单个播放器，支持缩放、移动和点击等基础操作。
+          </p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <span class="meta-label">默认配置</span>
+            <span class="meta-value">/app-config.json</span>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">资源来源</span>
+            <span class="meta-value">本地路径扫描</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel controls">
+        <div class="control-row">
+          <label class="field field-wide">
+            <span>模型根路径</span>
+            <input id="rootInput" type="text" placeholder="例如 /Users/zeta/Projects/live2d/live2d" />
+          </label>
+          <button id="scanButton" class="primary">重新扫描</button>
+        </div>
+
+        <div class="control-row">
+          <label class="field">
+            <span>搜索</span>
+            <input id="searchInput" type="search" placeholder="名称、路径、版本" />
+          </label>
+          <label class="field field-compact">
+            <span>版本</span>
+            <select id="versionFilter">
+              <option value="all">全部</option>
+              <option value="2">只看 Cubism 2</option>
+              <option value="3">只看 Cubism 3</option>
+            </select>
+          </label>
+          <button id="clearPreviewButton">清空预览</button>
+        </div>
+
+        <div class="status-bar">
+          <div id="scanStatus" class="status-pill">等待扫描</div>
+          <div id="summaryStats" class="summary-stats"></div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <aside class="panel model-sidebar">
+          <div class="section-head">
+            <h2>模型目录</h2>
+            <span id="visibleCount" class="section-count"></span>
+          </div>
+          <div id="modelList" class="model-list"></div>
+        </aside>
+
+        <main class="panel preview-panel">
+          <div class="section-head">
+            <h2>当前预览</h2>
+            <div class="section-head-actions">
+              <span id="previewCount" class="section-count">未选择模型</span>
+              <button id="togglePreviewSizeButton" type="button" class="ghost-button">放大预览</button>
+            </div>
+          </div>
+          <div id="previewHost" class="single-preview">
+            <div class="empty-state">
+              <p>从左侧点一个模型，右侧会打开单个大预览。</p>
+            </div>
+          </div>
+        </main>
+      </section>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
